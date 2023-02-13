@@ -1,0 +1,46 @@
+const { Schema, model } = require("mongoose");
+const Joi = require("joi");
+const bcrypt = require("bcryptjs");
+
+const userSchema = Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+  },
+  { versionKey: false, timestamps: true }
+);
+
+userSchema.methods.setPassword = function (password) {
+  this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+};
+
+const joiSignUpSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  password: Joi.string().min(5).required(),
+});
+
+const joiLoginSchema = Joi.object({
+  email: Joi.string().required(),
+  password: Joi.string().min(5).required(),
+});
+
+const User = model("user", userSchema);
+
+module.exports = {
+  User,
+  joiSignUpSchema,
+  joiLoginSchema,
+};
