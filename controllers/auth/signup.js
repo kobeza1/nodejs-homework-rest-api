@@ -2,7 +2,7 @@ const { User } = require("../../models");
 const { Conflict } = require("http-errors");
 // const bcrypt = require("bcryptjs");
 
-const signUp = async (req, res) => {
+const signup = async (req, res) => {
   const { name, email, password } = req.body;
   const user = await User.findOne({ email });
   if (user) {
@@ -25,4 +25,4 @@ const signUp = async (req, res) => {
   });
 };
 
-module.exports = signUp;
+module.exports = signup;

@@ -18,6 +18,10 @@ const userSchema = Schema(
       required: true,
       minlength: 5,
     },
+    token: {
+      type: String,
+      default: null,
+    },
   },
   { versionKey: false, timestamps: true }
 );
