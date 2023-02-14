@@ -8,4 +8,6 @@ router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
 
+router.patch("/", auth, ctrlWrapper(ctrl.changeSubscr));
+
 module.exports = router;
