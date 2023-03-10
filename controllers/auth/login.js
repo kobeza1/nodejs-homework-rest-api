@@ -13,8 +13,8 @@ const login = async (req, res) => {
   //   throw new Unauthorized("Email or password mismatch");
   // }
 
-  if (!user || !user.comparePassword(password)) {
-    throw new Unauthorized("Email or password mismatch");
+  if (!user || !user.verify || !user.comparePassword(password)) {
+    throw new Unauthorized("Email/password mismatch or user is not verified");
   }
 
   const payload = {
