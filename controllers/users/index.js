@@ -3,6 +3,7 @@ const getCurrent = require("./getCurrent");
 const changeSubscr = require("./changeSubscr");
 const updateAvatar = require("./updateAvatar");
 const verifyEmail = require("./verifyEmail");
+const verifyAgain = require("./verifyAgain");
 
 module.exports = {
   getAll,
@@ -10,4 +11,5 @@ module.exports = {
   changeSubscr,
   updateAvatar,
   verifyEmail,
+  verifyAgain,
 };
